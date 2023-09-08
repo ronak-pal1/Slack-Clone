@@ -1,6 +1,6 @@
 # <div align="center"> Slack Clone </div>
 
-<div align="center"> <img src="https://cdn.bfldr.com/5H442O3W/at/pl546j-7le8zk-6gwiyo/Slack_Mark.svg?auto=webp&format=png" width="400"/> </div>
+<div align="center"> <img src="https://cdn.bfldr.com/5H442O3W/at/pl546j-7le8zk-6gwiyo/Slack_Mark.svg?auto=webp&format=png" width="180"/> </div>
 
 <br><br>
 ## Things are I used to build this Clone 👇
