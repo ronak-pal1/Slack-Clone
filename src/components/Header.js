@@ -25,6 +25,8 @@ const Header = () =>{
 }
 
 const HeaderMain = styled.div`
+    position:fixed;
+    top: 0;
     background-color: #3F0F3F;
     display: flex;
     justify-content: space-between;
