@@ -18,6 +18,6 @@ export const appSlice = createSlice({
 
 export const { enterRoom } = appSlice.actions;
 
-export const selectRoomId = (state) => state.app.value;
+export const selectRoomId = (state) => state.app.roomId;
 
 export default appSlice.reducer;

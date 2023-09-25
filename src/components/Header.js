@@ -1,13 +1,18 @@
 import { AccessTime, HelpOutline, Search } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
+import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
+import { auth } from "../firebase";
 
 
 const Header = () =>{
+
+    const [user] = useAuthState(auth);
+
     return(
         <HeaderMain>
             <HeaderLeft>
-                <Avatar  className="avatar"/>
+                <HeaderAvatar onClick={() => auth.signOut()} alt={user?.displayName} src={user?.photoURL}></HeaderAvatar>
                 <AccessTime className="access__icon" />
             </HeaderLeft>
 
@@ -26,12 +31,12 @@ const Header = () =>{
 
 const HeaderMain = styled.div`
     position:fixed;
-    top: 0;
+    width: 100%;
     background-color: #3F0F3F;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
 `
 
 const HeaderLeft = styled.div`
@@ -57,8 +62,9 @@ const HeaderMiddle = styled.div`
     flex: 0.4;
     align-items: center;
     border: 1px solid whitesmoke;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    padding: 0 50px;
 
     > .MuiSvgIcon-root{
         color: white;
@@ -75,6 +81,7 @@ const HeaderMiddle = styled.div`
         outline: none;
         background: transparent;
         margin-left: 10px;
+        text-align: center;
     }
 
 `
@@ -82,10 +89,21 @@ const HeaderMiddle = styled.div`
 const HeaderRight = styled.div`
     display: flex;
     flex: 0.3;
-    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 30px;
 
     > .MuiSvgIcon-root{
         color: white;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+`
+
+const HeaderAvatar = styled(Avatar)`
+    cursor: pointer;
+    margin-left: 30px;
+    :hover{
+        opacity: 0.8;
     }
 `
 

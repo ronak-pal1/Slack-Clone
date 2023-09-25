@@ -2,10 +2,12 @@ import { Add, Apps, BookmarkBorder, Create, Drafts, ExpandLess, ExpandMore, Fibe
 import styled from "styled-components";
 import SidebarOption from "./SidebarOption";
 import {useCollection} from "react-firebase-hooks/firestore";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Sidebar = () => {
-    const [channels, loading, error] = useCollection(db.collection("rooms"));
+    const [channels] = useCollection(db.collection("rooms"));
+    const [user] = useAuthState(auth);
 
     return (
         <SidebarContainer>
@@ -14,7 +16,7 @@ const Sidebar = () => {
                     <h2>Codago</h2>
                     <h3>
                         <FiberManualRecord/>
-                        Ronak Paul
+                        {user?.displayName}
                     </h3>
                 </SidebarInfo>
                 <Create />
@@ -50,7 +52,7 @@ const SidebarContainer = styled.div`
     max-width: 260px;
     color: white;
     border-top: 1px solid #49274b;
-
+    margin-top: 60px;
     > hr{
         margin-top: 10px;
         margin-bottom: 10px;
